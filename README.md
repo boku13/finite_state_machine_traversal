@@ -1,6 +1,61 @@
 # Complex FSM Traversal Tool
 
+**Automation to perform Complex FSM (having more than 50 states or so) traversal given the Verilog description of any sequential design**
+
+## Team Members
+
+- **K. K. N. Shyam Sathvik (B22EE036)** - [GitHub Profile](https://github.com/boku13)
+- **Neermita Bhattacharya (B22CS092)** - [GitHub Profile](https://github.com/neermita18)
+
+## Project Overview
+
+**Course**: Formal Verification, Semester 7  
+**Date**: November 2025  
+**Objective**: Automate complex FSM traversal for sequential designs with 50+ states
+
 A comprehensive tool for analyzing Finite State Machines (FSMs) from Verilog descriptions. Supports complex FSMs with 50+ states, including state space exploration, reachability analysis, deadlock detection, and cycle detection.
+
+## Output & Results
+
+After running `python main.py --demo`, the tool analyzes multiple FSM designs:
+
+```
+Design                    States     Trans      Dead     Cycles
+--------------------------------------------------------------------------------
+traffic_light             4          8          0        4
+vending_machine           5          20         0        10
+protocol_fsm              56         448        0        24
+complex_counter           1          4          0        4
+sequence_detector         1          0          1        0
+```
+
+### Example: Protocol FSM (56 States)
+
+The `protocol_fsm.v` example demonstrates the tool's capability with 50+ states:
+
+**Analysis Results:**
+- Total Possible States: 64 (6-bit encoding)
+- Reachable States: 56
+- Coverage: 87.50%
+- Total Transitions: 448
+- Deadlock States: 0
+- Cycles Detected: 24
+- Execution Time: ~0.002 seconds
+
+**State Space:**
+- IDLE, INIT_1, INIT_2, INIT_3
+- TX_START_1 through TX_START_6
+- TX_DATA_1 through TX_DATA_8
+- TX_CRC_1 through TX_CRC_8
+- TX_END_1 through TX_END_4
+- WAIT_ACK_1 through WAIT_ACK_6
+- RX_ACK_1 through RX_ACK_4
+- RETRY_1 through RETRY_6
+- ERROR_1 through ERROR_6
+- CLEANUP_1, CLEANUP_2
+
+**Input Combinations**: 8 (3 inputs: start, ack, error)
+**Output Signals**: busy, done, state_out (6-bit)
 
 ## Features
 
@@ -324,25 +379,7 @@ Run the test suite:
 python test_fsm.py
 ```
 
-## Expected Output
 
-After running `python main.py --demo`, you should see:
-
-```
-Design                    States     Trans      Dead     Cycles
---------------------------------------------------------------------------------
-traffic_light             4          8          0        4
-vending_machine           5          20         0        10
-protocol_fsm              56         448        0        24
-complex_counter           1          4          0        4
-sequence_detector         1          0          1        0
-```
-
-Reports are saved in `fsm_reports/<module_name>/` with:
-- `fsm_report.txt` - Human-readable analysis
-- `transition_table.csv` - State transitions in CSV format
-- `fsm_graph.dot` - GraphViz diagram (use `dot -Tpng fsm_graph.dot -o output.png`)
-- `fsm_data.json` - Machine-readable JSON data
 
 ## Requirements
 
@@ -360,12 +397,6 @@ graphviz>=0.20.0    # DOT file rendering
 ## License
 
 This project is for educational purposes as part of formal verification coursework.
-
-## Project Details
-
-**Course**: Formal Verification, Semester 7  
-**Date**: November 2025  
-**Objective**: Automate complex FSM traversal for sequential designs with 50+ states
 
 ## References
 
