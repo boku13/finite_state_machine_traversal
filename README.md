@@ -317,39 +317,6 @@ The parser supports:
 - The tool uses the last `always` block containing next-state assignments (typically the combinational logic)
 - State registers are identified by keywords: `state`, `curr`, `present`
 
-## Troubleshooting
-
-**Issue: "No obvious state register found"**
-- **Solution**: Name your state register with `state`, `curr`, or `present` in the name
-- Example: `reg [1:0] current_state;` or `reg [2:0] state;`
-
-**Issue: "No next-state logic found"**
-- **Solution**: Ensure you have an `always @(*)` block with case/if statements that assign to `next_state`
-- The tool looks for assignments to variables containing "next" in the name
-
-**Issue: "Only 1 state found" or low coverage**
-- **Solution**: Check that your next-state logic is in a separate combinational `always @(*)` block
-- Verify parameter values are correctly defined (e.g., `parameter RED = 2'b00;`)
-
-**Issue: Unicode encoding errors**
-- **Solution**: This has been fixed - all Unicode characters replaced with ASCII
-
-## Limitations
-
-1. **Parser Limitations:**
-   - Focuses on behavioral Verilog (always blocks with case/if statements)
-   - Gate-level designs may have limited support
-   - Advanced SystemVerilog features not supported
-
-2. **Traversal Limitations:**
-   - Maximum state limit (default: 1000) for memory efficiency
-   - Large state spaces (>10000 states) may be slow
-   - Graph visualization limited to 50 states for readability
-
-3. **State Identification:**
-   - Relies on naming conventions (registers with "state" in name)
-   - Clock and reset signals must be named conventionally
-
 ## Command Reference
 
 ```bash
