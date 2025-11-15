@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# PyVerilog temporary files
+preprocess.output
+parser.out
+parsetab.py
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Reports (optional - comment out if you want to track reports)
+# fsm_reports/
+
+# Temporary files
+*.tmp
+*.bak
+*.log
