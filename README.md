@@ -50,6 +50,11 @@ python main.py --demo
 python main.py examples/traffic_light.v
 ```
 
+**Analyze the 50+ state protocol FSM:**
+```bash
+python main.py examples/protocol_fsm.v
+```
+
 **Use BFS traversal (default):**
 ```bash
 python main.py examples/vending_machine.v
@@ -148,6 +153,7 @@ formal_verification/
 ├── examples/                  # Example Verilog designs
 │   ├── traffic_light.v        # 4-state traffic light controller
 │   ├── vending_machine.v      # 5-state vending machine
+│   ├── protocol_fsm.v         # 56-state communication protocol (50+ states)
 │   ├── complex_counter.v      # 256-state counter FSM
 │   └── sequence_detector.v    # Gate-level sequence detector
 └── fsm_reports/               # Generated reports (created after running)
@@ -170,7 +176,15 @@ formal_verification/
 - **Outputs**: 2 (dispense, change_5)
 - **Result**: 62.5% state coverage (3 unreachable states), 20 transitions
 
-### 3. Complex Counter (`complex_counter.v`)
+### 3. Protocol FSM (`protocol_fsm.v`) - **50+ States**
+- **States**: 56 reachable out of 64 possible (6-bit encoding)
+- **Inputs**: 3 (start, ack, error)
+- **Outputs**: 3 (busy, done, state_out)
+- **Description**: Complex communication protocol with initialization, data transmission, CRC, acknowledgment, retry, and error handling phases
+- **Result**: 87.5% state coverage, 448 transitions
+- **Demonstrates**: Complex FSM traversal with 50+ states
+
+### 4. Complex Counter (`complex_counter.v`)
 - **States**: 256 (8-bit counter)
 - **Inputs**: 2 (2-bit mode selector)
 - **Outputs**: 3 (8-bit count + overflow + underflow)
@@ -319,6 +333,7 @@ Design                    States     Trans      Dead     Cycles
 --------------------------------------------------------------------------------
 traffic_light             4          8          0        4
 vending_machine           5          20         0        10
+protocol_fsm              56         448        0        24
 complex_counter           1          4          0        4
 sequence_detector         1          0          1        0
 ```

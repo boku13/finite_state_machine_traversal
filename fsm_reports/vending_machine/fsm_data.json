@@ -9,7 +9,7 @@
   "stats": {
     "num_states": 5,
     "num_transitions": 20,
-    "time_elapsed": 0.0003895759582519531
+    "time_elapsed": 0.0
   },
   "reachable_states": [
     {
