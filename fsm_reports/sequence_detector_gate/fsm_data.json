@@ -1,0 +1,29 @@
+{
+  "summary": {
+    "total_reachable_states": 1,
+    "total_transitions": 0,
+    "deadlock_count": 1,
+    "cycle_count": 0,
+    "coverage": "50.00%"
+  },
+  "stats": {
+    "num_states": 1,
+    "num_transitions": 0,
+    "time_elapsed": 0.0
+  },
+  "reachable_states": [
+    {
+      "state_vector": [
+        0
+      ],
+      "state_name": "RESET"
+    }
+  ],
+  "transitions": [],
+  "deadlock_states": [
+    [
+      0
+    ]
+  ],
+  "cycles": []
+}

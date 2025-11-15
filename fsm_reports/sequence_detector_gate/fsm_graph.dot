@@ -1,0 +1,7 @@
+digraph FSM {
+  rankdir=LR;
+  node [shape=circle];
+
+  "0" [color=red, style=filled, fillcolor=pink];
+
+}
